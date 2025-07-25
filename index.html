@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BeyondHorizon</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        /* Общие сбросы и базовые стили */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif; /* Более универсальный шрифт */
+            overflow-x: hidden; /* Предотвращает горизонтальную прокрутку */
+        }
+
+        /* Использование Flexbox для основного контента */
+        .title-section,
+        .why-are-me {
+            display: flex; /* Активируем Flexbox */
+            flex-direction: column; /* Элементы располагаются в колонку */
+            align-items: center; /* Центрируем по горизонтали */
+            justify-content: center; /* Центрируем по вертикали */
+            min-height: 5vh; /* Минимальная высота - 100% высоты вьюпорта */
+            text-align: center; /* Выравнивание текста по центру */
+            position: relative; /* Для позиционирования угловых элементов относительно этой секции */
+            padding: 2vw; /* Небольшой внутренний отступ, чтобы контент не прилипал к краям */
+            box-sizing: border-box; /* Включаем отступы и границы в размер элемента */
+        }
+
+        /* Заголовок */
+        .main-title {
+            font-size: 5vw; /* Размер шрифта масштабируется с шириной вьюпорта */
+            line-height: 1em; /* Межстрочный интервал относительно размера шрифта */
+            margin: 0.2em 0; /* Небольшие вертикальные отступы */
+            color: #333;
+            max-width: 55%; /* Ограничение ширины для длинного текста */
+        }
+
+        /* Описание */
+        .description-text {
+            font-size: 1vw; /* Размер шрифта масштабируется с шириной вьюпорта */
+            line-height: 0.5em;
+            margin-top: 10px; /* Отступ сверху */
+            color: #555;
+            max-width: 70%; /* Ограничение ширины для читабельности */
+        }
+
+        .description-text p {
+            margin: 0.5em 0; /* Отступы между параграфами */
+        }
+
+        /* Угловые изображения */
+        .corner {
+            position: absolute; /* Позиционируем абсолютно относительно .title-section */
+            width: 4vw; /* Ширина масштабируется с вьюпортом */
+            height: auto; /* Сохраняем пропорции */
+            /* Добавим минимальный размер для углов, чтобы они не становились слишком маленькими на очень узких экранах */
+        }
+
+        .corner_img {
+            width: 100%; /* Изображение заполняет контейнер .corner */
+            height: auto;
+            display: block;
+        }
+
+        /* Позиционирование каждого угла */
+        .corner.top-left {
+            top: 5%; /* Увеличим отступ сверху */
+            left: 5%; /* Увеличим отступ слева */
+        }
+        .corner.top-right {
+            top: 5%;
+            right: 5%;
+            transform: rotate(90deg);
+        }
+        .corner.bottom-right {
+            bottom: 5%; /* Увеличим отступ снизу */
+            right: 5%;
+            transform: rotate(180deg);
+        }
+        .corner.bottom-left {
+            bottom: 5%;
+            left: 5%;
+            transform: rotate(-90deg);
+        }
+
+        .star1 {
+            position: absolute;
+            width: 3vw;
+            top: 15%;
+            left: 80%;
+        }
+
+        .star2 {
+            position: absolute;
+            width: 2vw;
+            top: 60%;
+            left: 30%;
+        }
+
+        /* Медиа-запросы для более тонкой настройки на разных размерах экрана */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 10vw; /* Увеличиваем размер шрифта на маленьких экранах */
+            }
+            .description-text {
+                font-size: 3vw;
+            }
+            .corner {
+                width: 15vw; /* Увеличиваем углы на маленьких экранах */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 12vw;
+            }
+            .description-text {
+                font-size: 4vw;
+            }
+            .corner {
+                width: 20vw;
+            }
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #555;
+            margin: 40px auto;
+            width: 90%;
+            border-radius: 0px;
+        }
+
+        .why-are-me img {
+            display: flex;
+            width: 100%;
+        }
+
+        .why-one {
+            display: flex;
+            flex-direction: row; /* Элементы why-one располагаются слева направо */
+            justify-content: center;
+            align-items: flex-start; /* Выравнивание элементов по верхней границе */
+            flex-wrap: wrap; /* Для переноса элементов на новую строку, если не хватает места */
+            gap: 20px; /* Расстояние между элементами why-one */
+            padding: 20px; /* Добавим отступ для why-one */
+        }
+
+        .item {
+            display: flex; /* Активируем Flexbox для каждого item */
+            flex-direction: row; /* Фотография и текст будут располагаться в ряд */
+            align-items: flex-start; /* Выравнивание по верхнему краю */
+            width: 49%; /* Ширина каждого элемента, чтобы они располагались по два в ряд */
+            box-sizing: border-box; /* Учитываем padding и border в ширине */
+            text-align: left; /* Выравнивание текста по левому краю внутри item */
+        }
+
+        .item-img {
+            flex-shrink: 0; /* Запрещаем сжимать изображение */
+            margin-right: 15px; /* Отступ справа от изображения */
+            width: 40%; /* Устанавливаем ширину для блока с изображением */
+        }
+
+        .item-img img {
+            width: 100%; /* Изображение будет занимать всю ширину своего контейнера */
+            height: auto;
+            display: block;
+            border-radius: 4px; /* Скругление углов изображения */
+        }
+
+        .item-content {
+            flex-grow: 1; /* Разрешаем контенту занимать оставшееся пространство */
+        }
+
+        .why-one .content h1 { /* Изменено: стили для h1 внутри .content */
+            font-size: 1vw; /* Уменьшаем размер шрифта для основного текста */
+            line-height: 1.4em; /* Улучшаем читаемость */
+            color: #333;
+            margin: 0.5em 0;
+            max-width: 100%; /* Разрешаем занимать всю ширину родителя */
+            font-weight: normal; /* Обычный шрифт для основного текста */
+        }
+
+        .why-one .title h1 {
+            font-size: 3vw;
+            margin: 0.2em 0;
+            color: #333;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="title-section">
+    <h1 class="main-title">Пора отправляться За Горизонт</h1>
+    <div class="description-text">
+        <p>Мы делаем туры, которые вы запомните на всю жизнь!</p>
+        <p>А заботы берем на себя</p>
+    </div>
+    <div class="title-star">
+        <img class="star1" src="https://static.tildacdn.com/tild3265-3461-4363-b763-626333376631/Group.png">
+        <img class="star2" src="https://static.tildacdn.com/tild3265-3461-4363-b763-626333376631/Group.png">
+    </div>
+    <div class="corner top-left">
+        <img class="corner_img" src="https://static.tildacdn.com/tild3932-3963-4433-b734-663861643562/_.svg" alt="Декоративный угол">
+    </div>
+    <div class="corner top-right">
+        <img class="corner_img" src="https://static.tildacdn.com/tild3932-3963-4433-b734-663861643562/_.svg" alt="Декоративный угол">
+    </div>
+    <div class="corner bottom-right">
+        <img class="corner_img" src="https://static.tildacdn.com/tild3932-3963-4433-b734-663861643562/_.svg" alt="Декоративный угол">
+    </div>
+    <div class="corner bottom-left">
+        <img class="corner_img" src="https://static.tildacdn.com/tild3932-3963-4433-b734-663861643562/_.svg" alt="Декоративный угол">
+    </div>
+</div>
+<hr>
+<div class="why-are-me">
+    <h1 style="font-size: 3vw; margin: 0.2em 0; color: #333;max-width: 100%;">Почему стоит отправляться за горизонт вместе с нами?</h1>
+    <div class="why-one">
+        <div class="item">
+            <div class="item-img">
+                <img src="https://avatars.dzeninfra.ru/get-zen_doc/271828/pub_6526c4b469ac1c29cce49c3b_6526d4386aa69a1073150381/scale_1200">
+            </div>
+            <div class="item-content">
+                <div class="title">
+                    <h1 style="font-size: 1.5vw; margin: 0.2em 0; color: #333;max-width: 100%;">ВПЕЧАТЛЕНИЯ НА ВСЮ ЖИЗНЬ</h1>
+                </div>
+                <div class="content">
+                    <h1 style="margin-top: 15em;">
+                        Мы делаем туры в такие места, из которых вы гарантированно привезете миллион историй, чтобы потом рассказать их вашим друзьям, коллегам и будущим внукам
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-img">
+                <img src="https://sun9-4.userapi.com/impf/2QH4aw3YDW0FMUYNHtvg3Krw6N31UvNCM5k-hg/imenp-9ejbk.jpg?size=1080x1350&quality=96&sign=2d7ab4de551ec09815610d245c0fc1f6&c_uniq_tag=0C68Yy1jxMtT_0dgQGHEqRLIDUyyYxmhiyw0UFURavk&type=album">
+            </div>
+            <div class="item-content">
+                <div class="title">
+                    <h1 style="font-size: 1.5vw; margin: 0.2em 0; color: #333;max-width: 100%;">ДЕЙСТВИТЕЛЬНО ОТДОХНЕТЕ</h1>
+                </div>
+                <div class="content">
+                    <h1 style="margin-top: 14em;">Мы берем всю организацию путешествия на себя, поэтому для вас отдых действительно будет отдыхом, а не бесконечным бронированием гостиниц, составлением маршрута и поиском билетов на самолеты, поезда и автобусы</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="why-one">
+        <div class="item">
+            <div class="item-img">
+                <img src="https://cs14.pikabu.ru/post_img/2023/07/12/5/1689143272157327241.jpg">
+            </div>
+            <div class="item-content">
+                <div class="title">
+                    <h1 style="font-size: 1.5vw; margin: 0.2em 0; color: #333;max-width: 100%;">ИНТЕРЕСНАЯ КОМПАНИЯ</h1>
+                </div>
+                <div class="content">
+                    <h1 style="margin-top: 18.5em;">
+                        Если вы захотели поехать в такие нетривиальные места, то велика вероятность, что и попутчики окажутся интересными ребятами — близкими вам по духу
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="item">
+            <div class="item-img">
+                <img src="https://yandex-images.clstorage.net/s99Jks332/ef82616K5o/3GMkliKeEfWDYD0ppujiSyyUSkwb4W8Fc2iItzHy-QcuiVgOo1JjyzsmBxpt3J6bFK5CzTTnIDElYgkcXeq4OJo1YM9hwFb1hnR2I-ry7ls52FcPAfM3CUVT9JJAzoNiVf50cuILfNh5SmxbesuT4D-MIOYS5FllUWgaE2u99UX5Uj-mJIpt4aFlWAqgyc5iLMJjZxWMT3FoeeWKYf6Od0v4d0r0BAfGS1RDGFD3jMUrsD_KOvB0QHFhBAhVlsJg_3IFmBGifMmXeVgxjuTDWyTtbHArqGdPckjbo2jLtWVe61hSwhAW0G1fWj5T3ojoArkDzCTUfXx_cikkYrDgYsN1BJoFg239pWVEBKP872cw2El_ArhIX1BHwb1q6ZxIasx5UssDMcFdY0IoRe-C2AWCBNwd3WFAdEENEEOD22f6WjiTA6BFyK1BWiiPwNV7HMlefwS-bHhLXce3aNWlSl_fdU3KHwPlT1dBEEPdkfk0rg3HFvZbZVJhFStUtOtP2GAhkyCGbdOUY3cDhf_2WDX3R1A5v3dOfE7Pn3bXhUVU2Htl3DkZ_ERTZylzypXNMIA09BzhUFdVYR4PfpbiSPlnOZYBqVrWr3JnNq_14nkFyHViIoR3YGx87b5Y3IRET9hlWtcZFe5jZmIdTfasyCSDMOMzxnpyVXc5LFO16G_dZxm_OoBa6ZBFWgaV9O12EN1oYDi_UWN-fNaJbMiAYnTadmX-OSDESVRxEkjej_0wpRbbO9JDc1V1LBtrr9dP5VQIgDepR9S0aVw6rvz3eTrCdkUejXFNcGHFlk3zhmdT0WhVyRIx6WhiSi9__pHaBowh4CfwVFxYdAQWYLDQf-xJJ7oWpVDTindKCozOzkwO_EBvIJ1FeFlW9qRb0IZDVPx3UPkhKO5dbXcSTNGX-AWtHOQZ7HhwYUokJ3CX4nPBexGfN71M0ox7RTSRzMlfMOhGQwiJQk1LZtm9WuI">
+            </div>
+            <div class="item-content">
+                <div class="title">
+                    <h1 style="font-size: 1.5vw; margin: 0.2em 0; color: #333;max-width: 100%;">РАСШИРЕНИЕ КРУГОЗОРА</h1>
+                </div>
+                <div class="content">
+                    <h1 style="margin-top: 11.5em;">
+                        Если вы захотели поехать в такие нетривиальные места, то велика вероятность, что и попутчики окажутся интересными ребятами — близкими вам по духу
+                        Расширение кругозора
+                        Сложно переоценить, как путешествия влияют на то, как мы видим и ощущаем мир, других людей и себя в этом мире. Одна поездка, например, в Африку стоит сотни прочитанных новостей и книг. Особенно если ехать с открытым сердцем
+                    </h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>
+</body>
+</html>
