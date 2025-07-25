@@ -224,7 +224,6 @@
              flex-direction: row;
              margin-left: 50px;
              margin-right: 50px;
-             gap: 45px;
          }
 
          .features .title {
@@ -247,11 +246,117 @@
         .features .list .item h1 {
             font-size: 1em;
             color: #333;
+            margin-left: 40px;
+            margin-right: 20px;
         }
 
         .features .list .item img {
-            width: 400px;
+            width: 350px;
             height: 400px;
+            border-radius: 10px;
+        }
+
+        .registration {
+            display: flex;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .registration .title h1 {
+            font-size: 4.3em;
+            color: #333;
+        }
+
+        .registration .description h1 {
+            font-size: 1.3em;
+            color: #333;
+            margin-top: -40px;
+        }
+
+        .registration .fields {
+            display: flex; /* Используем Flexbox для расположения полей */
+            flex-direction: column; /* Располагаем поля вертикально */
+            gap: 20px; /* Расстояние между полями */
+            margin-top: 30px; /* Отступ сверху от описания */
+            width: 60%; /* Ограничиваем ширину контейнера полей */
+            max-width: 600px; /* Максимальная ширина для читабельности на больших экранах */
+            align-items: center; /* Центрируем поля по горизонтали внутри .registration */
+            padding: 0 20px; /* Горизонтальные отступы для контейнера */
+            box-sizing: border-box; /* Учитываем padding в ширине */
+        }
+
+        /* Стили для элемента Select */
+        .registration .fields select,
+        .registration .name-and-number input,
+        .registration .number input {
+            width: 100%; /* Занимает всю доступную ширину родителя (.place) */
+            padding: 15px 20px; /* Внутренние отступы */
+            border: 1px solid #ccc; /* Тонкая серая граница */
+            border-radius: 8px; /* Скругленные углы */
+            background-color: #fff; /* Белый фон */
+            font-size: 1.1em; /* Размер шрифта */
+            color: #333;
+            appearance: none; /* Убирает стандартные стили браузера для select */
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="#333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Кастомная иконка стрелки */
+            background-repeat: no-repeat;
+            background-position: right 15px center; /* Позиция стрелки */
+            background-size: 20px; /* Размер стрелки */
+            cursor: pointer; /* Курсор-указатель при наведении */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Легкая тень */
+            transition: all 0.3s ease; /* Плавный переход при изменении стилей */
+        }
+
+        .registration .fields .place {
+            width: 600px;
+        }
+
+        .registration .fields select:focus {
+            outline: none; /* Убираем стандартную обводку при фокусе */
+            border-color: #007bff; /* Цвет границы при фокусе */
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Небольшая тень при фокусе */
+        }
+
+        /* Стили для опций в выпадающем списке (может быть ограничено в разных браузерах) */
+        .registration .fields select option {
+            padding: 10px;
+        }
+
+        /* Стили для метки (label) - если вы хотите её стилизовать */
+        .registration .fields label,
+        .registration .name-and-number input,
+        .registration .number input{
+            display: block; /* Чтобы метка занимала всю ширину */
+            margin-bottom: 8px; /* Отступ снизу от метки до select */
+            font-size: 1em;
+            color: #555;
+            font-weight: bold;
+        }
+
+        .registration .name-and-number {
+            display: flex;
+            position: relative;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .registration .name-and-number input {
+            width: 248px;
+        }
+
+        .registration .number input {
+            width: 558px;
+        }
+
+        .registration .button button {
+            width: 600px;
+            color: #f8f6f6;
+            background-color: #333;
             border-radius: 10px;
         }
     </style>
@@ -380,7 +485,7 @@
         </div>
         <div class="item">
             <div class="text">
-                <h1>(3) Знакомим с местными жителями, их культурой и укладом. Проводим мастер-классы</h1>
+                <h1>(4) Знакомим с местными жителями, их культурой и укладом. Проводим мастер-классы</h1>
             </div>
             <div class="image">
                 <img src="https://static.tildacdn.com/tild3664-6230-4664-a463-646334643336/IMG_7158.jpg">
@@ -390,7 +495,7 @@
     <div class="list">
         <div class="item">
             <div class="text">
-                <h1>(4) Выбираем комфорт. Останавливаемся в уютных отелях. Пользуемся комфортным транспортом</h1>
+                <h1>(5) Выбираем комфорт. Останавливаемся в уютных отелях. Пользуемся комфортным транспортом</h1>
             </div>
             <div class="image">
                 <img src="https://static.tildacdn.com/tild6666-6462-4534-a539-376134376239/psHnLLUnjxPPaOUmbUeA.jpg">
@@ -398,7 +503,7 @@
         </div>
         <div class="item">
             <div class="text">
-                <h1>(5) Выбираем локальные отели, вместо сетевых, для погружения в культуру</h1>
+                <h1>(6) Выбираем локальные отели, вместо сетевых, для погружения в культуру</h1>
             </div>
             <div class="image">
                 <img src="https://static.tildacdn.com/tild3837-3733-4063-b830-313234316266/IMG_8641.jpg">
@@ -406,7 +511,7 @@
         </div>
         <div class="item">
             <div class="text">
-                <h1>(6) Пробуем культовые блюда локальной кухни</h1>
+                <h1>(7) Пробуем культовые блюда локальной кухни</h1>
             </div>
             <div class="image">
                 <img src="https://static.tildacdn.com/tild3831-6230-4563-b834-303761626566/oom_bZHmXh24CJV1cGkE.jpg">
@@ -414,7 +519,7 @@
         </div>
         <div class="item">
             <div class="text">
-                <h1>(3) Знакомим с местными жителями, их культурой и укладом. Проводим мастер-классы</h1>
+                <h1>(8) Едем небольшой группой от 10 до 16 человек, близких по духу, ценностям и интересам</h1>
             </div>
             <div class="image">
                 <img src="https://static.tildacdn.com/tild3862-6131-4933-a638-656639366230/18.jpg">
@@ -423,12 +528,43 @@
     </div>
 </div>
 <hr>
+<div class="tur">
+    здесь будут туры
+</div>
+<hr>
 <div class="registration">
     <div class="title">
+        <h1>ОТПРАВЛЯЙСЯ В СВОЙ ТУР ПРЯМО СЕЙЧАС!</h1>
     </div>
     <div class="description">
+        <h1>Выбери поездку и оставь свои контакты, а мы свяжемся с тобой и обсудим все детали)</h1>
+    </div>
+    <div class="fields">
+        <div class="place">
+            <label for="prediction-temp"><select id="prediction-temp">
+                <option value="place1">Кения</option>
+                <option value="place2">Иран</option>
+                <option value="place3">Китай</option>
+                <option value="place4">Кыргыстан</option>
+                <option value="place5">Узбекистан</option>
+                <option value="place6">Сокотра</option>
+            </select></label>
+        </div>
+    </div>
+    <div class="name-and-number">
+        <div class="name"><input placeholder="ВАШЕ ИМЯ"></div>
+        <div class="mail"><input placeholder="ВАША ПОЧТА"></div>
+    </div>
+    <div class="number">
+        <input placeholder="+7 (999) 999 99-99">
+    </div>
+    <div class="button">
+        <button>
+            <h1>(+) ЗАБРОНИРОВАТЬ ТУР</h1>
+        </button>
     </div>
 </div>
+<hr>
 <div class="information">
     <div class="title">
         <h2>Контактная информация</h2>
