@@ -359,6 +359,63 @@
             background-color: #333;
             border-radius: 10px;
         }
+
+        .tour {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            height: 500px;
+            padding: 0 100px;
+            gap: 50px;
+        }
+
+        .tour .image {
+            flex: 1;
+            max-width: 50%;
+            height: 100%;
+        }
+
+        .tour .image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .tour .text {
+            flex: 1;
+            max-width: 50%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tour .text .title {
+            align-self: flex-end;
+            margin-top: 20px;
+            flex-direction: column;
+            display: flex;
+            position: relative;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .tour .text .title h1{
+            font-size: 3em;
+            color: #333;
+        }
+
+        .tour .text .description {
+            flex-wrap: wrap;
+        }
+
+        .tour .text .description p {
+            font-size: 1.2em;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -528,8 +585,36 @@
     </div>
 </div>
 <hr>
-<div class="tur">
-    здесь будут туры
+<div class="tour">
+    <div class="image">
+        <img src="https://static1.squarespace.com/static/5e3c90ed8db2c3480b23ed46/t/5f0a8837b7e70d0ea19a05d0/1594525759055/AfricaSafari.JPG">
+    </div>
+    <div class="text">
+        <div class="title">
+            <h1>КЕНИЯ</h1>
+            <div class="amount">
+                <p>200.000р</p>
+            </div>
+        </div>
+        <div class="description">
+            <p>Кения — это мир контрастов: от бескрайних саванн до лазурных пляжей Индийского океана. Здесь вы увидите "большую пятерку" на незабываемом сафари. Познакомьтесь с богатой культурой масаев и гостеприимством местных жителей. Каждый закат в Кении — это яркое, незабываемое зрелище.</p>
+        </div>
+    </div>
+</div>
+<hr>
+<div class="tour">
+</div>
+<hr>
+<div class="tour">
+</div>
+<hr>
+<div class="tour">
+</div>
+<hr>
+<div class="tour">
+</div>
+<hr>
+<div class="tour">
 </div>
 <hr>
 <div class="registration">
